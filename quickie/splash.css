@@ -85,3 +85,46 @@ input
 	color:#C00;
 	font-size:10px;
 }
+#BgBars
+{
+	position:absolute;
+	left:110px;
+	bottom:0px;
+	top:0px;
+	width:1140;
+	height:100%;
+}
+.BgBarOdd
+{
+	position:absolute;
+	background-color:#d9ffff;
+	bottom:0px;
+	top:435px;
+}
+.BgBarEven
+{
+	position:absolute;
+	background-color:#d9ffff;
+	bottom:0px;
+	top:100px;
+}
+#BgBar1
+{
+	left:0px;
+	width:150px;
+}
+#BgBar2
+{
+	left:250px;
+	width:200px;
+}
+#BgBar3
+{
+	left:690px;
+	width:200px;
+}
+#BgBar4
+{
+	left:990px;
+	width:150px;
+}

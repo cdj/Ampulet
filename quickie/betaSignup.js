@@ -38,6 +38,7 @@ $(document).ready(function(){
 			// log a message to the console
 			console.log("Email signed up for beta");
 			setCookie("BetaSignup", "true");
+			shiftBars();
 			$("#BetaSignup").html("Ampulet has recorded your request. We’ll send you an invitation as soon as we can!");
 		  },
 		  // callback handler that will be called on error
@@ -57,6 +58,25 @@ $(document).ready(function(){
 		return false;
 	});
 });
+function shiftBars()
+{
+	var up = "+=335px";
+	var down = "-=335px";
+	
+	console.log("Animating");
+	if ($(".BgBarOdd").attr("top") == '435px')
+	{
+		console.log("Shifting");
+		$('.BgBarOdd').animate({top: up}, 1000);
+		$('.BgBarEven').animate({top: down}, 1000);
+	}
+	else
+	{
+		console.log("Shifting 2");
+		$('.BgBarOdd').animate({top: down}, 1000);
+		$('.BgBarEven').animate({top: up}, 1000);
+	}
+}
 function getCookie(c_name)
 {
 	var i;
