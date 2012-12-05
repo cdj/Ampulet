@@ -20,7 +20,7 @@ if (isset($_POST['EmailText']) && (strlen(trim($_POST['EmailText'])) > 0))
 		$num_rows = mysql_num_rows($result);
 		if ($num_rows > 0)
 		{
-			header('HTTP/1.1 400 Invailid email address');
+			header('HTTP/1.1 400 Email address already registered');
 			die('Invalid email');
 		}
 		
