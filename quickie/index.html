@@ -8,6 +8,19 @@
 <link href="splash.css" rel="stylesheet" type="text/css">
 <script src="jquery-1.8.3.min.js"></script>
 <script src="betaSignup.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36870901-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 </head>
 
 <body>
@@ -26,13 +39,13 @@
         </div>
         <div id="LogoText">Ampulet</div>
     </div>
-    <h2>Dragging healthcare kicking and screaming into the 21st century.</h2>
+    <h2>Helping patients understand their health</h2>
     <p>Ampulet is currently in private beta.<br>
     Sign up for a chance to get access.</p>
     <div id="BetaSignup">
-        <form id="BetaSignupForm">
-            <input name="EmailText" id="EmailText" type="text" placeholder="enter your email address">
-            <input name="EmailSignupButton" id="EmailSignupButton" type="button" value="sign up">
+        <form name="BetaSignupForm" id="BetaSignupForm" action="" method="post">
+            <input name="EmailText" id="EmailText" type="text" placeholder="enter your email address" maxlength="320">
+            <input name="EmailSignupButton" id="EmailSignupButton" type="submit" value="sign up">
         </form>
         <p id="InvalidEmailError"></p>
     </div>

@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	if(getCookie("BetaSignup") == "true")
 	{
-		//$("#BetaSignup").html("We’ll send you an invitation as soon as we can!");
+		$("#BetaSignup").html("We’ll send you an invitation as soon as we can!");
 	}
 	
 	$("#BetaSignupForm").submit(function(event) {
@@ -63,16 +63,13 @@ function shiftBars()
 	var up = "+=335px";
 	var down = "-=335px";
 	
-	console.log("Animating");
 	if ($(".BgBarOdd").attr("top") == '435px')
 	{
-		console.log("Shifting");
 		$('.BgBarOdd').animate({top: up}, 1000);
 		$('.BgBarEven').animate({top: down}, 1000);
 	}
 	else
 	{
-		console.log("Shifting 2");
 		$('.BgBarOdd').animate({top: down}, 1000);
 		$('.BgBarEven').animate({top: up}, 1000);
 	}

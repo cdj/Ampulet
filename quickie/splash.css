@@ -5,12 +5,6 @@ body
 	font-family:Arial, Helvetica, sans-serif;
 	color:#5b5b5b;
 }
-input
-{
-	-webkit-border-radius:5px;
-	-moz-border-radius:5px;
-	border-radius:5px;
-}
 #Content
 {
 	text-transform:lowercase; 
@@ -63,17 +57,33 @@ input
 	width:100%; 
 	position:absolute;
 }
+input
+{
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	border-color:#999;
+	border-style:solid;
+}
 #EmailText
 {
 	left:0px; 
 	right:70px;
 	position:absolute;
+	border-spacing: 0px;
+	margin: 0px;
+	padding: 0px;
+	space: 0px;
+	height:21px;
 }
 #EmailSignupButton
 {
 	right:0px; 
 	width:65px;
 	position:absolute;
+	background-color:#d9ffff;
+	margin: 0px;
+	height:21px;
 }
 #BetaSignupForm
 {

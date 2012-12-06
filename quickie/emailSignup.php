@@ -5,17 +5,18 @@ if (isset($_POST['EmailText']) && (strlen(trim($_POST['EmailText'])) > 0))
 {
 	if (filter_var($_POST['EmailText'], FILTER_VALIDATE_EMAIL))
 	{
-		$emailAddress = mysql_real_escape_string(strip_tags($_POST['EmailText']));
-		
 		$con = mysql_connect($dbServerName,$dbUserName,$dbUserPassword);
 		if (!$con)
 		{
+			header('HTTP/1.1 500 Internal server error');
 			die('Could not connect: ' . mysql_error());
 		}
 		
 		mysql_select_db($dbName, $con);
 		
-		$sql = "SELECT `EmailNum` FROM `Emails` WHERE  `EmailAddress` =  '".$emailAddress."'";
+		$emailAddress = mysql_real_escape_string($_POST['EmailText']);
+		
+		$sql = "SELECT `EmailNum` FROM `Emails` WHERE `EmailAddress` = '".$emailAddress."'";
 		$result = mysql_query($sql);
 		$num_rows = mysql_num_rows($result);
 		if ($num_rows > 0)
