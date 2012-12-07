@@ -54,8 +54,11 @@ body
 }
 #BetaSignup
 {
-	width:100%; 
-	position:absolute;
+	/*width:100%; */
+}
+#BetaSignupForm
+{
+	/*height:18px;*/
 }
 input
 {
@@ -64,31 +67,19 @@ input
 	border-radius:5px;
 	border-color:#999;
 	border-style:solid;
+	margin: 0px;
+	padding: 0px;
 }
 #EmailText
 {
-	left:0px; 
-	right:70px;
-	position:absolute;
 	border-spacing: 0px;
-	margin: 0px;
-	padding: 0px;
 	space: 0px;
-	height:21px;
+	width:380px;
 }
 #EmailSignupButton
 {
-	right:0px; 
-	width:65px;
-	position:absolute;
-	background-color:#d9ffff;
-	margin: 0px;
-	height:21px;
-}
-#BetaSignupForm
-{
-	height:22px;
-	padding-top:5px;
+	width: 65px;
+	background-color: #d9ffff;
 }
 #InvalidEmailError
 {
