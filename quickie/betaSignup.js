@@ -1,8 +1,8 @@
 $(document).ready(function(){
-	if(getCookie("BetaSignup") == "true")
-	{
-		$("#BetaSignup").html("We’ll send you an invitation as soon as we can!");
-	}
+//	if(getCookie("BetaSignup") == "true")
+//	{
+//		$("#BetaSignup").html("We’ll send you an invitation as soon as we can!");
+//	}
 	
 	$("#BetaSignupForm").submit(function(event) {
 		var $form = $(this);
@@ -48,6 +48,11 @@ $(document).ready(function(){
 				"The following error occured: " +
 				textStatus, errorThrown
 			);
+			if ("Email address already registered" == errorThrown)
+			{
+				setCookie("BetaSignup", "true");
+				shiftBars();
+			}
 			$("#InvalidEmailError").html("* " + errorThrown);
 			$inputs.removeAttr("disabled");
 			$("input#EmailText").focus();
@@ -60,10 +65,10 @@ $(document).ready(function(){
 });
 function shiftBars()
 {
-	var up = "+=335px";
-	var down = "-=335px";
+	var up = "-=335px";
+	var down = "+=335px";
 	
-	if ($(".BgBarOdd").attr("top") == '435px')
+	if ($("#BgBar1").css("top") == "435px")
 	{
 		$('.BgBarOdd').animate({top: up}, 1000);
 		$('.BgBarEven').animate({top: down}, 1000);
