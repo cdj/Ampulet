@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<title>Ampulet</title>
+<script src="jquery-1.9.1.min.js"></script>
+<script>
+	  var period = 2000;
+	  var anim;
+	  var stage;
+	  var bkLayer;
+	  var bkCircleRadius = 40;
+	  var bkCircleBigRadBump = 40;
+	  var xSpacing = 80;
+	  var ySpacing = 80;
+	  var bkCircles = [];
+	  var bkCircleSpeed = 0.1;
+	  var incTotal = 10;
+	  var timer;
+	window.onload = function() {
+		  
+		  for(var w = 0; w < $("#container").width(); w += xSpacing) {
+			  for(var h = 0; h < $("#container").height(); h += ySpacing) {
+				  // Determine the x and y increments for animating
+				  var xInc = Math.floor(Math.random()*(incTotal*2+1))-incTotal;
+				  var yInc = (incTotal - Math.abs(xInc))*(1-(Math.floor(Math.random()*2)*2));
+				  
+				  var bkCircle =  document.createElementNS("http://www.w3.org/2000/svg", "circle");
+				  // Determine big or small radius
+				  var rad = bkCircleRadius;
+				  if(Math.floor(Math.random()*2)) {
+					  rad += bkCircleBigRadBump;
+					  bkCircle.classList.add("bkCircleBig");
+				  } else {
+					  bkCircle.classList.add("bkCircleSmall");
+				  }
+				  bkCircle.setAttribute("cx", w + Math.random()*rad - rad/2);
+				  bkCircle.setAttribute("cy", h + Math.random()*rad - rad/2);
+				  bkCircle.setAttribute("r", rad);
+				  bkCircle.setAttribute("fill", "green");
+				  bkCircle.setAttribute("fill-opacity", 0.3);
+				  bkCircle.classList.add("bkCircle");
+				  $("#container").append(bkCircle);
+				  bkCircles.push({ circle: bkCircle, xinc: xInc, yinc: yInc });
+			  }
+		  }
+		  console.log(bkCircles.length + " circles generated");
+		  timer = setInterval(updateBk, 10);
+      };
+	  function updateBk() {
+		  jQuery.each(bkCircles, function() {
+			  this.circle.cx.baseVal.value += this.xinc * bkCircleSpeed;
+			  this.circle.cy.baseVal.value += this.yinc * bkCircleSpeed;
+			  
+			  // Change directions when they start going off screen
+			  if(this.circle.cx.baseVal.value < 0 || this.circle.cx.baseVal.value > $("#container").width()) {
+				  this.xinc *= -1;
+			  }
+			  if(this.circle.cy.baseVal.value < 0 || this.circle.cy.baseVal.value > $("#container").height()) {
+				  this.yinc *= -1;
+			  }
+		  });
+	  }
+</script>
+<style type="text/css">
+body {
+	margin: 0px;
+}
+#container {
+	padding: 0px;
+	position: absolute;
+}
+</style>
+</head>
+
+<body>
+<svg id="container" xmlns="http://www.w3.org/2000/svg" version="1.1" baseProfile="tiny"></svg>
+</body>
+</html>

@@ -1,0 +1,62 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	margin: 0px;
+	font-family:"Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#bkContainer {
+	top:0px;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	position: absolute;
+	z-index:-100;
+}
+#sideScreen {
+	background-color:#FFF;
+	position:absolute;
+	top:0px;
+	bottom:0px;
+	right:0px;
+	padding:5px;
+}
+#arrowButton {
+	position: absolute;
+	bottom: 0px;
+	z-index:100;
+}
+.clicked {
+	left: 0px;
+}
+.notClicked {
+	right: 0px;
+}
+.hidden {
+	left: 100%;
+	display:none;
+}
+.shown {
+	left: 62px;
+	display:block;
+}
+.flip-horizontal {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    transform: scaleX(-1);
+    -ms-filter: fliph; /*IE*/
+    filter: fliph; /*IE*/
+}
+#infoPane {
+	top:0px;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	position:relative;
+}
+#healthNumber {
+	color:#FFF;
+	font-size:x-large;
+	text-align:center;
+}

@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<title>Ampulet</title>
+<script src="jquery-1.9.1.min.js"></script>
+<script src="kinetic-v4.3.2.min.js"></script>
+<script>
+	  var period = 2000;
+	  var anim;
+	  var stage;
+	  var bkLayer;
+	  var bkCircleRadius = 40;
+	  var bkCircleBigRadBump = 40;
+	  var xSpacing = 80;
+	  var ySpacing = 80;
+	  var bkCircles = [];
+	  var bkCircleSpeed = 0.1;
+	  var incTotal = 10;
+	  
+      window.onload = function() {
+		  stage = new Kinetic.Stage({container: "container", width: window.innerWidth, height: window.innerHeight});
+		  bkLayer = new Kinetic.Layer();
+		  
+		  for(var w = 0; w < stage.getWidth(); w += xSpacing) {
+			  for(var h = 0; h < stage.getHeight(); h += ySpacing) {
+				  // Determine the x and y increments for animating
+				  var xInc = Math.floor(Math.random()*(incTotal*2+1))-incTotal;
+				  var yInc = (incTotal - Math.abs(xInc))*(1-(Math.floor(Math.random()*2)*2));
+				  // Determine big or small radius
+				  var rad = bkCircleRadius + (Math.floor(Math.random()*2) + 1) * bkCircleBigRadBump;
+				  var bkCircle = new Kinetic.Circle({
+						x: w + Math.random()*rad - rad/2,
+						y: h + Math.random()*rad - rad/2,
+						radius: rad,
+						fill: 'green',
+						opacity: 0.3
+				  });
+				  bkLayer.add(bkCircle);
+				  bkCircles.push({ circle: bkCircle, xinc: xInc, yinc: yInc });
+			  }
+		  }
+	
+		  stage.add(bkLayer);
+		  
+		  anim = new Kinetic.Animation(function(frame){
+			  updateBk(frame);
+		  }, bkLayer);
+		  
+		  anim.start();
+		  console.log(bkCircles.length + " circles generated");
+      };
+	  
+	  function updateBk(frame) {
+		  /*var scale = Math.sin(frame.time * 2 * Math.PI / period) * 0.1 + 1;
+		  for(var n = 0; n < shapes.length; n++) {
+			  var shape = shapes[n];
+			  shape.setScale(scale);
+		  }*/
+		  jQuery.each(bkCircles, function() {
+			  this.circle.setX(this.circle.getX() + this.xinc * bkCircleSpeed);
+			  this.circle.setY(this.circle.getY() + this.yinc * bkCircleSpeed);
+			  
+			  // Change directions when they start going off screen
+			  if(this.circle.getX() < 0 || this.circle.getX() > stage.getWidth()) {
+				  this.xinc *= -1;
+			  }
+			  if(this.circle.getY() < 0 || this.circle.getY() > stage.getHeight()) {
+				  this.yinc *= -1;
+			  }
+		  });
+	  }
+	  
+	  function bkMove() {
+		  if(anim.isRunning()) {
+			  anim.stop();
+		  } else {
+			  anim.start();
+		  }
+	  }
+	  
+	  // For resize/rotate
+	  function adjustBk() {
+		  var oldWidth = stage.getWidth();
+		  var oldHeight = stage.getHeight();
+		  stage.setWidth(window.innerWidth);
+		  stage.setHeight(window.innerHeight);
+		  
+		  if(window.innerWidth > stage.getWidth()) {
+			  // Add circles to enlarged regions
+		  }
+		  else if(window.innerWidth < stage.getWidth()) {
+			  // Remove circles from smaller regions
+		  }
+		  
+		  
+		  if(window.innerHeight > stage.getHeight()) {
+			  // Add circles to enlarged regions
+		  }
+		  else if(window.innerHeight < stage.getHeight()) {
+			  // Remove circles from smaller regions
+		  }
+	  }
+</script>
+<style type="text/css">
+body {
+	margin: 0px;
+}
+#container {
+	padding: 0px;
+	position: absolute;
+}
+</style>
+</head>
+
+<body onmousedown="return false;">
+<div id="container" onClick="bkMove()"></div>
+</body>
+</html>
