@@ -1,0 +1,391 @@
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('../fonts/segoeui.ttf');
+    font-weight: bolder;
+}
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('../fonts/segoeui.eot');
+    font-weight: bolder;
+}
+
+@font-face {
+    font-family: 'Segoe UI Light';
+    src: url('../fonts/segoeuil.eot');
+    font-weight: lighter;
+}
+@font-face {
+    font-family: 'Segoe UI Light';
+    src: url('../fonts/segoeuil.ttf');
+    font-weight: lighter;
+}
+
+@font-face {
+    font-family: 'Segoe UI Semi-Light';
+    src: url('../fonts/segoeuisl.eot');
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'Segoe UI Semi-Light';
+    src: url('../fonts/segoeuisl.ttf');
+    font-weight: normal;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+/*reset*/
+body, div, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, p, th, td, article, section, figure, img {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+
+    background-image: url('../img/violet-pink.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-attachment: fixed;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    letter-spacing: 1px;
+
+    font-size: 1.6rem; /*16 px*/
+    line-height: 2.5rem; /*vertical page rhythm*/
+    color: white;
+}
+
+/*home page*/
+
+h1 {
+    font-family: 'Segoe UI Light', sans-serif;
+    font-weight: lighter;
+    font-size: 3.8rem;
+    line-height: 4.6rem; /*2 x base rhythm*/
+    margin: 2.3rem 0 0 0; /*base rhythm top and bottom */
+    letter-spacing: 11.6px;
+    text-shadow: 0px 0px 5px #FFFFBE;
+}
+
+h2 {
+    font-family: 'Segoe UI Semi-Light', sans-serif;
+    font-weight: normal;
+    font-size: 1.8rem;
+    text-align: left;
+    text-shadow: 0px 0px 2px #BEFFFF;
+}
+
+h2.right {
+    text-align: right;
+    min-width: 200px;
+}
+
+header {
+    color: #F1F0F0;
+    position: absolute;
+    top: 25%;
+    left: 41%;
+}
+
+nav ul {
+    overflow: hidden;
+    margin-top: 875px;
+    background: url('../images/home/home-page-footer-bar.png') repeat-x 0 0;
+}
+
+nav li {
+    list-style-type: none;
+    float: left;
+    padding-left: 60px; /*top right bottom left*/
+    padding-bottom: 3px;
+}
+
+nav a {
+    font-size: 1.0rem;
+    text-decoration: none;
+    color: Gainsboro;
+    text-shadow: 0px 0px 1px #FFFFFF;
+}
+
+a:active, a:hover {
+    color: #FFFFFF;
+}
+
+footer {
+    position: absolute;
+    clear: both;
+    bottom: 13px;
+    width: 100%;
+}
+
+.nyc {
+    float: right !important;
+    position: absolute;
+    left: 74%;
+}
+
+a.homebutton {
+    background-color: #000000;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    opacity: 0.4;
+
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: normal;
+    font-size: 1.5rem;
+    color: Gainsboro;
+    text-decoration: none;
+    text-shadow: 0px 0px 2px #FFFFBE;
+
+    float:right;
+    margin-right: 14px;
+    margin-top: 10px;
+    padding-left: 15px;
+    padding-right: 11px;
+    padding-bottom: 5px;
+}
+
+a.homebutton:hover {
+    color: #FFFFFF;
+    border: 1px solid Gainsboro;
+}
+
+
+
+.outerCenter
+{
+    position: absolute;
+    right: 50%;
+    top: 50%;
+}
+.innerCenter
+{
+    position: relative;
+    left: 50%;
+    bottom: 50%;
+}
+.titleText
+{
+    text-transform: uppercase;
+    margin: 0px;
+    font-size: 2.4em;
+    vertical-align: top;
+    text-align: center;
+    padding: 10px;
+}
+@-webkit-keyframes splashPulse
+{
+    from
+    {
+        text-shadow: 0px 0px 5px #FFFFBE;
+    }
+    to
+    {
+        text-shadow: 0px 0px 50px #FFFFBE;
+    }
+}
+@-moz-keyframes splashPulse
+{
+    from
+    {
+        text-shadow: 0px 0px 5px #FFFFBE;
+    }
+    to
+    {
+        text-shadow: 0px 0px 50px #FFFFBE;
+    }
+}
+#SplashPane
+{
+}
+#SplashPane div h1
+{
+      -webkit-animation-name: splashPulse;
+      -webkit-animation-duration: 1.5s;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: ease-in-out;
+      -webkit-animation-direction: alternate;
+      -moz-animation-name: splashPulse;
+      -moz-animation-duration: 1.5s;
+      -moz-animation-iteration-count: infinite;
+      -moz-animation-timing-function: ease-in-out;
+      -moz-animation-direction: alternate;
+      margin: 0;
+}
+#MainPane
+{
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+#TitleBar div
+{
+    top: 0px;
+}
+#TitleBar h1
+{
+    line-height: 2.6rem;
+    font-size: 2rem;
+}
+#TitleBar
+{
+/*    top: 0px;
+    left: 0px;
+    right: 0px;*/
+    background-color: rgba(0,0,0,0.6);
+    display: block;
+    /*position: relative;
+    right: 50%;*/
+    z-index: 100;
+}
+#LeftButton
+{
+    height: 26px;
+    width: 26px;
+    position: absolute;
+    left: 0px;
+    padding: 10px;
+}
+#NumberButton
+{
+    line-height: 26px;
+    vertical-align: top;
+    text-align: center;
+    padding: 0;
+}
+#HelpButton
+{
+    height: 26px;
+    position: absolute;
+    right: 0px;
+    padding: 10px;
+}
+#NumberPane
+{
+    display: none;
+}
+#NumberPane div
+{
+    text-align: center;
+    -webkit-border-radius: 500px;
+    -moz-border-radius: 500px;
+    border-radius: 500px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    padding: 8px;
+    font-size: 2.4rem;
+    line-height: 2.4rem;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    cursor: pointer;
+}
+#ContentPane
+{
+    /*overflow: scroll;*/
+}
+#Menu
+{
+/*    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 46px;
+    bottom: 0px;
+    overflow: scroll;*/
+}
+.menuItem
+{
+    font-size: 1.6rem;
+    text-transform: lowercase;
+    height: 3.2rem;
+    margin-top: 1.6rem;
+    padding: 2.4rem;
+    background-image: url('../img/menu-arrow.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+.menuItem:hover, .menuItem:active
+{
+    border-color: rgba(80,80,80,0.3);
+    border-width: 2px;
+    cursor: pointer;
+    padding-top: 22px;
+    padding-bottom: 22px;
+    border-left-style: none;
+    border-right-style: none;
+}
+.menuItem:hover
+{
+    border-top-style: outset;
+    border-bottom-style: outset;
+}
+.menuItem:active
+{
+    border-top-style: inset;
+    border-bottom-style: inset;
+}
+#Doctors
+{
+    background-color: white;
+    color: black;
+    padding-left: 1.6rem;
+    padding-top: 2.6rem;
+/*    position: absolute;
+    right: 0px;
+    top: 46px;
+    bottom: 0px;
+    overflow: scroll;*/
+    display: none;
+}
+.doctorItem
+{
+    margin-top: 1.8rem;
+    cursor: pointer;
+}
+.doctorName
+{
+    font-size: 1.6rem;
+}
+.doctorType
+{
+    text-transform: lowercase;
+    font-size: 1.2rem;
+}
+#DoctorDetails
+{
+    display: none;
+    text-align: center;
+    padding-top: 1.8rem;
+}
+#SharePane
+{
+    display: none;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 64px;
+}
+#SharePane p
+{
+    text-transform: lowercase;
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 11px;
+}
+#ShareButton
+{
+    display: block;
+    position: relative;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    margin-bottom: 32px;
+}

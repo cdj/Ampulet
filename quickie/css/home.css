@@ -1,0 +1,156 @@
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('../fonts/segoeui.ttf');
+    font-weight: bolder;
+}
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('../fonts/segoeui.eot');
+    font-weight: bolder;
+}
+
+@font-face {
+    font-family: 'Segoe UI Light';
+    src: url('../fonts/segoeuil.eot');
+    font-weight: lighter;
+}
+@font-face {
+    font-family: 'Segoe UI Light';
+    src: url('../fonts/segoeuil.ttf');
+    font-weight: lighter;
+}
+
+@font-face {
+    font-family: 'Segoe UI Semi-Light';
+    src: url('../fonts/segoeuisl.eot');
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'Segoe UI Semi-Light';
+    src: url('../fonts/segoeuisl.ttf');
+    font-weight: normal;
+}
+
+html {
+    font-size: 62.5;
+}
+
+/*reset*/
+body, div, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, p, th, td, article, section, figure, img {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+
+    background-image: url('../images/home/home-blank.jpg'); /*'../images/home/tempsplash.jpg'*/
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-attachment: fixed;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    letter-spacing: 1px;
+
+    font-size: 1.5rem; /*15 px*/
+    line-height: 2.5rem; /*vertical page rhythm*/
+}
+
+/*home page*/
+
+h1 {
+    font-family: 'Segoe UI Light', sans-serif;
+    font-weight: lighter;
+    font-size: 3.8rem;
+    line-height: 4.6rem; /*2 x base rhythm*/
+    margin: 2.3rem 0 0 0; /*base rhythm top and bottom */
+    letter-spacing: 11.6px;
+    text-shadow: 0px 0px 5px #FFFFBE;
+}
+
+h2 {
+    font-family: 'Segoe UI Semi-Light', sans-serif;
+    font-weight: normal;
+    font-size: 1.8rem;
+    text-align: left;
+    text-shadow: 0px 0px 2px #BEFFFF;
+}
+
+h2.right {
+    text-align: right;
+    min-width: 200px;
+}
+
+header {
+    color: #F1F0F0;
+    position: absolute;
+    top: 25%;
+    left: 41%;
+}
+
+nav ul {
+    overflow: hidden;
+    margin-top: 875px;
+    background: url('../images/home/home-page-footer-bar.png') repeat-x 0 0;
+}
+
+nav li {
+    list-style-type: none;
+    float: left;
+    padding-left: 60px; /*top right bottom left*/
+    padding-bottom: 3px;
+}
+
+nav a {
+    font-size: 1.0rem;
+    text-decoration: none;
+    color: Gainsboro;
+    text-shadow: 0px 0px 1px #FFFFFF;
+}
+
+a:active, a:hover {
+    color: #FFFFFF;
+}
+
+footer {
+    position: absolute;
+    clear: both;
+    bottom: 13px;
+    width: 100%;
+}
+
+.nyc {
+    float: right !important;
+    position: absolute;
+    left: 74%;
+}
+
+a.homebutton {
+    background-color: #000000;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    opacity: 0.4;
+
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: normal;
+    font-size: 1.5rem;
+    color: Gainsboro;
+    text-decoration: none;
+    text-shadow: 0px 0px 2px #FFFFBE;
+
+    float:right;
+    margin-right: 14px;
+    margin-top: 10px;
+    padding-left: 15px;
+    padding-right: 11px;
+    padding-bottom: 5px;
+}
+
+a.homebutton:hover {
+    color: #FFFFFF;
+    border: 1px solid Gainsboro;
+}

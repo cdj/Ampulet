@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="white" />
+<link rel="apple-touch-startup-image" href="img/startup.png">
+<link rel="apple-touch-icon" href="img/touch-icon-iphone.png" />
+<link rel="apple-touch-icon" sizes="57x57" href="img/icon_57.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/touch-icon-ipad.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="img/touch-icon-iphone-retina.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="img/touch-icon-ipad-retina.png" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+<link rel="stylesheet" type="text/css" href="css/mobile.css">
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	setTimeout(function(){showNumber();},3000)
+});
+
+function showNumber() {
+	$("#SplashPane").hide("fast", function() { // remove splash page
+		$("#NumberPane").show("fast", function() { // show the number circle button
+			$("#NumberPane").children().first().mouseup(function() { // when clicking the number button
+				$("#NumberPane").hide("fast", function() {
+					$("#MainPane").show("fast", function() { // show the main page with the main menu
+						$("#Menu").children().first().mouseup(function() {
+							$("#Menu").hide("fast", function() {
+								$("#Doctors").show("fast", function() { // show the doctor list
+
+								});
+							});
+						});
+					});
+				});
+			});
+		});
+	});
+}
+</script>
+
+<title>Ampulet Mobile</title>
+</head>
+
+<body>
+	<div id="SplashPane" class="outerCenter"><div class="innerCenter titleText"><h1>Ampulet</h1></div></div>
+	<div id="NumberPane" class="outerCenter"><div class="innerCenter">83</div></div>
+	<div id="MainPane">
+		<div id="TitleBar">
+			<div id="LeftButton">
+				<div id="NumberButton">83</div>
+			</div>
+			<h1 class="titleText">Ampulet</h1>
+			<div id="HelpButton"><img src="img/question.png"></div>
+		</div>
+		<div id="ContentPane">
+			<div id="Menu">
+				<div class="menuItem">Doctors</div>
+				<div class="menuItem">Medical Record</div>
+				<div class="menuItem">Social Score</div>
+			</div>
+			<div id="Doctors">
+				<div class="doctorItem">
+					<p class="doctorName">Henry Jenkins</p>
+					<p class="doctorType">Primary Care</p>
+				</div>
+				<div class="doctorItem">
+					<p class="doctorName">Grace Ng</p>
+					<p class="doctorType">Oncologist</p>
+				</div>
+				<div class="doctorItem">
+					<p class="doctorName">Allan Ray</p>
+					<p class="doctorType">Cardiologist</p>
+				</div>
+			</div>
+			<div id="DoctorDetails">
+				<p class="doctorName">Henry Jenkins</p>
+				<p class="doctorType">Primary Care</p>
+			</div>
+			<div id="SharePane">
+				<p>Share 3 records</p>
+				<div style="position: absolute; right: 50%">
+					<div id="ShareButton"><img src="img/share-arrow-custom.png"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
