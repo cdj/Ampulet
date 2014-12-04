@@ -1,0 +1,452 @@
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('../fonts/segoeui.ttf');
+    font-weight: bolder;
+}
+@font-face {
+    font-family: 'Segoe UI';
+    src: url('../fonts/segoeui.eot');
+    font-weight: bolder;
+}
+
+@font-face {
+    font-family: 'Segoe UI Light';
+    src: url('../fonts/segoeuil.eot');
+    font-weight: lighter;
+}
+@font-face {
+    font-family: 'Segoe UI Light';
+    src: url('../fonts/segoeuil.ttf');
+    font-weight: lighter;
+}
+
+@font-face {
+    font-family: 'Segoe UI Semi-Light';
+    src: url('../fonts/segoeuisl.eot');
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'Segoe UI Semi-Light';
+    src: url('../fonts/segoeuisl.ttf');
+    font-weight: normal;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+/*reset*/
+body, div, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, p, th, td, article, section, figure, img {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+
+    letter-spacing: 1px;
+
+    font-size: 1.6rem; /*16 px*/
+    line-height: 2.5rem; /*vertical page rhythm*/
+    color: white;
+    text-transform: lowercase;
+
+    background-image: url('../img/homebg.jpg');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-attachment: fixed;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/*home page*/
+
+h1 {
+    font-family: 'Segoe UI Light', sans-serif;
+    font-weight: lighter;
+    font-size: 3.8rem;
+    line-height: 4.6rem; /*2 x base rhythm*/
+    margin: 2.3rem 0 0 0; /*base rhythm top and bottom */
+    letter-spacing: 11.6px;
+    text-shadow: 0px 0px 5px #FFFFBE;
+}
+
+h2 {
+    font-family: 'Segoe UI Semi-Light', sans-serif;
+    font-weight: normal;
+    font-size: 1.8rem;
+    text-align: left;
+    text-shadow: 0px 0px 2px #BEFFFF;
+}
+
+h2.right {
+    text-align: right;
+    min-width: 200px;
+}
+
+header {
+    color: #F1F0F0;
+    position: absolute;
+    top: 25%;
+    left: 41%;
+}
+
+nav ul {
+    overflow: hidden;
+    margin-top: 875px;
+    background: url('../images/home/home-page-footer-bar.png') repeat-x 0 0;
+}
+
+nav li {
+    list-style-type: none;
+    float: left;
+    padding-left: 60px; /*top right bottom left*/
+    padding-bottom: 3px;
+}
+
+nav a {
+    font-size: 1.0rem;
+    text-decoration: none;
+    color: Gainsboro;
+    text-shadow: 0px 0px 1px #FFFFFF;
+}
+
+a:active, a:hover {
+    color: #FFFFFF;
+}
+
+footer {
+    position: absolute;
+    clear: both;
+    bottom: 13px;
+    width: 100%;
+}
+
+.nyc {
+    float: right !important;
+    position: absolute;
+    left: 74%;
+}
+
+a.homebutton {
+    background-color: #000000;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    opacity: 0.4;
+
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: normal;
+    font-size: 1.5rem;
+    color: Gainsboro;
+    text-decoration: none;
+    text-shadow: 0px 0px 2px #FFFFBE;
+
+    float:right;
+    margin-right: 14px;
+    margin-top: 10px;
+    padding-left: 15px;
+    padding-right: 11px;
+    padding-bottom: 5px;
+}
+
+a.homebutton:hover {
+    color: #FFFFFF;
+    border: 1px solid Gainsboro;
+}
+
+
+
+.outerCenter
+{
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+}
+.innerCenter
+{
+    position: relative;
+    left: 50%;
+    top: 50%;
+}
+.titleText
+{
+    text-transform: uppercase;
+    margin: 0px;
+    font-size: 2.4em;
+    vertical-align: top;
+    text-align: center;
+    padding: 10px;
+}
+@-webkit-keyframes splashPulse
+{
+    from
+    {
+        text-shadow: 0px 0px 5px #FFFFBE;
+    }
+    to
+    {
+        text-shadow: 0px 0px 50px #FFFFBE;
+    }
+}
+@-moz-keyframes splashPulse
+{
+    from
+    {
+        text-shadow: 0px 0px 5px #FFFFBE;
+    }
+    to
+    {
+        text-shadow: 0px 0px 50px #FFFFBE;
+    }
+}
+#LoadingPane
+{
+    z-index: 500;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+
+    background-image: url('../img/homebg.jpg');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-attachment: fixed;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#LoadingPane h1
+{
+      -webkit-animation-name: splashPulse;
+      -webkit-animation-duration: 1.5s;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: ease-in-out;
+      -webkit-animation-direction: alternate;
+      -moz-animation-name: splashPulse;
+      -moz-animation-duration: 1.5s;
+      -moz-animation-iteration-count: infinite;
+      -moz-animation-timing-function: ease-in-out;
+      -moz-animation-direction: alternate;
+      margin: 0;
+      text-align: center;
+}
+#LoadingCircle
+{
+    height: 60px;
+    width: 60px;
+    display: none;
+}
+#MainPane
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    z-index: 40;
+
+    background-image: url('../img/homebg.jpg');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-attachment: fixed;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.contentPane
+{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+#TopBar
+{
+    background-color: rgba(0,54,164,0.5);
+    position: relative;
+    height: 39px;
+    overflow: hidden;
+    display: block;
+    z-index: 100;
+}
+#DrawerButton
+{
+    position: relative;
+    left: 0px;
+    margin: 4px;
+    top: -31px;
+}
+#TopBar h2
+{
+    text-align: center;
+    position: relative;
+    line-height: 31px;
+}
+#PhotoPane
+{
+    overflow: auto;
+    height: 100%;
+    display: block;
+}
+#PhotoPane > div
+{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.overlay
+{
+    background-color: rgba(0,0,0,0.5);
+}
+.menu
+{
+    list-style-type: none;
+    -webkit-padding-start: 0px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+.menu > li:active, .menu > li:hover {
+    background-color: rgba(255,255,255,0.3);
+}
+.dialog
+{
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+}
+
+#PhotoCapturePane > .contentPane
+{
+    background-image: url('../img/viewfinder.png');
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    background-repeat:no-repeat;
+    background-position:center;
+}
+#PhotoAnnotatePane
+{
+    display: none;
+}
+#GestureExamples
+{
+    width: 100%;
+    height: auto;
+}
+
+.bottomBar
+{
+    position: relative;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+#PhotoCaptureBar
+{
+    height: 90px;
+}
+#PhotoCaptureBar img:nth-child(odd)
+{
+    margin: 29px 20px;
+}
+#PhotoCaptureBar img:nth-child(even)
+{
+    margin: 11px 20px;
+}
+#PhotoSwipeBar
+{
+    height: 57px;
+}
+#PhotoSwipeBar img
+{
+    margin: 0px 20px;
+}
+#PhotoSwipeBar p
+{
+    vertical-align: top;
+    text-align: center;
+    line-height: 37px;
+    margin: 10px 0px;
+}
+
+#DrawerMenu
+{
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    overflow: auto;
+    z-index: 0;
+}
+#DrawerMenuTop
+{
+    line-height: 39px;
+    position: relative;
+    height: 39px;
+    overflow: hidden;
+    display: block;
+    border-bottom-width: 1px;
+    border-bottom-color: white;
+    border-bottom-style: solid;
+    vertical-align: top;
+}
+#DrawerMenu ul
+{
+    list-style-type: none;
+    padding: 10px 0px;
+    margin: 0px;
+}
+#DrawerMenu li
+{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#DrawerMenu li:active, #DrawerMenu li:hover {
+    background-color: rgba(255,255,255,0.3);
+}
+
+
+#NumberButton
+{
+    line-height: 26px;
+    vertical-align: top;
+    text-align: center;
+    padding: 0;
+    z-index: 0;
+}
+#NumberPane div
+{
+    text-align: center;
+    -webkit-border-radius: 500px;
+    -moz-border-radius: 500px;
+    border-radius: 500px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    padding: 8px;
+    font-size: 2.4rem;
+    line-height: 2.4rem;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    cursor: pointer;
+}
+input, textarea
+{
+    text-transform: none;
+}

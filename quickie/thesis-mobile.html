@@ -1,0 +1,268 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="white" />
+<link rel="apple-touch-startup-image" href="img/startup.png">
+<link rel="apple-touch-icon" href="img/touch-icon-iphone.png" />
+<link rel="apple-touch-icon" sizes="57x57" href="img/icon_57.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/touch-icon-ipad.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="img/touch-icon-iphone-retina.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="img/touch-icon-ipad-retina.png" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.3.custom.min.css">
+<link rel="stylesheet" type="text/css" href="css/thesis-mobile.css">
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="js/thesis-mobile.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#DrawerButton").click(function() { toggleDrawer(); });
+	$("#AcceptPhotoButton").click(function() { loadPhotoAnnotate(); });
+	$("#PhotoSwipeBar img:first").click(function() { swipePreviousPhotoAnnotate(); });
+	$("#PhotoSwipeBar img:last").click(function() { swipeNextPhotoAnnotate(); });
+	fixHeight();
+	$(window).resize(function() { fixHeight(); });
+	setTimeout(function() { loadApp(); }, 3000);
+
+});
+
+function loadApp() {
+	$("#PhotoAnnotatePane").children("div:not(:first,:last)").hide(0, function() { });
+	$(".primaryPane:visible").hide();
+	$("#HomePane").show();
+
+	// $("#TopBar").show(0, function() { });
+	// $("#PhotoPane").show(0, function() { });
+	// $("#PhotoCapturePane").show(0, function() { });
+
+	$("#LoadingPane").fadeOut("fast", function() { }); // remove splash page
+}
+
+function toggleDrawer() {
+	if($("#MainPane").css("left") == '0px') {
+		$("#DrawerMenu").toggle("slide", { direction: "left", easing: 'easeOutQuint' }, 300);
+		$("#MainPane").animate({ left: '+=' + ($("#DrawerMenu").width() - 1).toString(), width: '-=' + ($("#DrawerMenu").width() - 1).toString() }, 600, 'easeOutSine');
+	} else {
+		$("#MainPane").animate({ left: '-=' + ($("#DrawerMenu").width() - 1).toString(), width: '+=' + ($("#DrawerMenu").width() - 1).toString() }, 400, 'easeOutQuint');
+		$("#DrawerMenu").toggle("slide", { direction: "left", easing: 'easeOutSine' }, 600);
+	}
+}
+
+function navigateTo(paneName, paneId) {
+	// $("#PaneTitle").text("");
+
+	if ($(".primaryPane:visible").length < 1) {
+		showPanel(paneName, paneId);
+	} else {
+		$(".primaryPane:visible").toggle("slide", { direction: "up" }, function() {
+			showPanel(paneName, paneId);
+		});
+	}
+}
+
+function showPanel(paneName, paneId) {
+	$("#PaneTitle").text(paneName);
+	$("#"+paneId).toggle("slide", { direction: "down" });
+}
+
+function loadPhotoAnnotate() {
+	$("#PhotoCapturePane").toggle("slide", { direction: "left" }, function() {
+		$("#PhotoAnnotatePane").toggle("slide", { direction: "right" });
+	});
+}
+
+function swipeNextPhotoAnnotate() {
+	if($("#PhotoAnnotatePane").children("div:visible").size() > 1) {
+		var togo = $("#PhotoAnnotatePane").children("div:visible").first();
+		var tocome = togo.next();
+		if (tocome.next().size() == 0) {
+			return;
+		}
+
+		togo.toggle("slide", { direction: "left" }, function() {
+			tocome.toggle("slide", { direction: "right" });
+		});
+	}
+}
+
+function swipePreviousPhotoAnnotate() {
+	if($("#PhotoAnnotatePane").children("div:visible").size() > 1) {
+		var togo = $("#PhotoAnnotatePane").children("div:visible").first();
+		var tocome = togo.prev();
+		if (tocome.size() == 0) {
+			return;
+		}
+
+		togo.toggle("slide", { direction: "right" }, function() {
+			tocome.toggle("slide", { direction: "left"});
+		});
+	}
+}
+
+function fixHeight() {
+	$(".primaryPane").height($("#MainPane").height() - $("#TopBar").height());
+	$("#PhotoPane").children("div").height($("#MainPane").height() - $("#TopBar").height());
+	$("#PhotoCapturePane").children(".contentPane").height($("#MainPane").height() - $("#TopBar").height() - $("#PhotoCaptureBar").height());
+	$("#PhotoAnnotatePane").children(".contentPane").height($("#MainPane").height() - $("#TopBar").height() - $("#PhotoSwipeBar").height());
+}
+</script>
+
+<title>Ampulet Mobile</title>
+</head>
+
+<body>
+	<div id="MainPane">
+		<div id="LoadingPane">
+			<div class="outerCenter"><div class="innerCenter">
+			<h1 title="Ampulet">Ampule+</h1>
+			<canvas id="LoadingCircle"></canvas>
+			</div></div>
+		</div>
+		<div id="TopBar">
+			<h2 id="PaneTitle">Home</h2>
+			<img alt="Drawer Menu Button" src="img/3bar.png" id="DrawerButton">
+		</div>
+		<div id="HomePane" class="primaryPane"></div>
+		<div id="DoctorsPane" class="primaryPane"></div>
+		<div id="MedicationsPane" class="primaryPane"></div>
+		<div id="RecordsPane" class="primaryPane"></div>
+		<div id="PhotoPane" class="primaryPane">
+			<div id="PhotoCapturePane">
+				<div class="contentPane"><p class="overlay dialog">in good light</p></div>
+				<div id="PhotoCaptureBar" class="bottomBar">
+					<p><img src="img/thumbsdown.png"><img src="img/shutter.png"><img id="AcceptPhotoButton" src="img/thumbsup.png"></p>
+				</div>
+			</div>
+			<div id="PhotoAnnotatePane">
+				<div title="Locate pain" class="contentPane">
+					<p>where do you feel discomfort? is it over a big or small area?</p>
+					<img alt="This is how to locate the pain" src="img/locate-gestures.png" id="GestureExamples">
+					<!-- locator -->
+				</div>
+				<div title="Pain type" class="contentPane">
+					<p>can you describe the sensation?</p>
+					<!-- radial menu -->
+				</div>
+				<div title="Discomfort" class="contentPane">
+					<p>ok i got it, a it feels like tearing. tell me how severe the discomfort is?</p>
+					<ul class="overlay menu">
+						<li>0<br>no discomfort</li>
+						<li>1 -3<br>mild discomfort<br>nagging, annoying<br>i can do almost all my daily activities</li>
+						<li>4 - 6<br>moderate discomfort<br>it is very difficult to do my daily activities</li>
+						<li>7 - 10<br>severe discomfort<br>the discomfort is disabling<br>i can’t do my daily activities at all</li>
+					</ul>
+				</div>
+				<div title="Frequency" class="contentPane">
+					<p>ok great. it’s a mild discomfort. can you tell me about the quality of the experience?</p>
+					<ul class="overlay menu">
+						<li>sudden</li>
+						<li>ongoing</li>
+						<li>off and on</li>
+						<li>chronic</li>
+					</ul>
+				</div>
+				<div title="Feeling" class="contentPane">
+					<p>i understand, it’s off and on. can you tell me about the quality of the experience?</p>
+					<ul class="overlay menu">
+						<li>constantly</li>
+						<li>throbbing</li>
+						<li>intermittent</li>
+					</ul>
+				</div>
+				<div title="Activity level" class="contentPane">
+					<p>i see, it is intermittent. are you active when it happens or maybe stressed?</p>
+					<ul class="overlay menu">
+						<li>active</li>
+						<li>inactive</li>
+						<li>stressed</li>
+					</ul>
+				</div>
+				<div title="Aggravator" class="contentPane">
+					<p>got it, you were active! is there anything that makes it worse? maybe a sudden movement or position?</p>
+					<ul class="overlay menu">
+						<li>yes</li>
+						<li>no</li>
+					</ul>
+				</div>
+				<div title="Details" class="contentPane">
+					<p>ok just tell me a little bit more. i’m listening. just press go when you are finished.</p>
+					<textarea>i feel it right where i got appendix taken out. after running hills. feels like a piece of stitching or something is ripping!</textarea>
+				</div>
+				<div title="Confirmation" class="contentPane">
+					<p>this is what you described. if you need to make changes, just tap on the highlighted item.</p>
+					<p>you feel a tearing sensation that is causing you mild discomfort. 
+						it happens off and on and feels intermittent when it occurs; 
+						you notice it when you are active. 
+						and you said: 
+						<q>i feel it right where i got appendix taken out. after running hills. feels like a piece of stitching or something is ripping!</q>
+					</p>
+				</div>
+				<div title="Create story" class="contentPane">
+					<p>do you want to create a new story? or add this information to a story you already made?</p>
+					<ul class="overlay menu">
+						<li>create new</li>
+						<li>add to existing</li>
+					</ul>
+				</div>
+				<div title="Select story" class="contentPane">
+					<ul class="overlay menu">
+						<li>Ankle injury</li>
+						<li>Ab pains</li>
+						<li>Jammed finger</li>
+						<li>for dermatologist</li>
+					</ul>
+				</div>
+				<div title="Name story" class="contentPane">
+					<p>what do you want to call your story?</p>
+					<input type="text" value="type the name below">
+				</div>
+				<div id="PhotoSwipeBar" class="bottomBar">
+					<p><img src="img/left-arrow.png"> Swipe <img src="img/right-arrow.png"></p>
+				</div>
+			</div>
+		</div>
+		<div id="CarePane" class="primaryPane"></div>
+		<div id="SettingsPane" class="primaryPane"></div>
+		<div id="EmergencyPane" class="primaryPane">
+			<div id="EmergencyActivate">
+				activate?
+				your device will turn on and share its:
+				GPS
+				WIFI
+				VIDEO AND AUDIO
+				CONNECT TO 911
+				do you wish to proceed?
+				tap and hold for 3 seconds to activate
+				tap and hold for 3 seconds to cancel
+			</div>
+			<div id="EmergencyConnecting">connecting to emergency services ...</div>
+			<div id="EmergencyCall">
+				call in progress ...
+				please continue to record scene ...
+				tap and hold for 3 seconds to end call
+			</div>
+		</div>
+	</div>
+	<div id="DrawerMenu" class="overlay">
+		<div id="DrawerMenuTop" onclick="navigateTo('Home','HomePane')"><img alt="Home Icon" src="img/house.png"> Home</div>
+		<div>
+			<ul>
+				<li onclick="navigateTo('Doctors','DoctorsPane')">Doctors</li>
+				<li onclick="navigateTo('Medications','MedicationsPane')">Medications</li>
+				<li onclick="navigateTo('Records','RecordsPane')">Records</li>
+				<li onclick="navigateTo('Photo','PhotoPane')">Photo</li>
+				<li onclick="navigateTo('Care','CarePane')">Care</li>
+			</ul>
+		</div>
+		<div id="DrawerMenuBottom">
+			<p onclick="navigateTo('Settings','SettingsPane')"><img alt="Settings Icon" src="img/settings.png"> Settings</p>
+			<p onclick="navigateTo('Emergency','EmergencyPane')"><img alt="Emergency Icon" src="img/redcross.png"> Emergency</p>
+		</div>
+	</div>
+</body>
+</html>
